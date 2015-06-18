@@ -23,6 +23,18 @@ describe MultiplicationTable do
     end
   end
 
+  describe "#make_table_s" do
+    it "should create a string version of a multiplication table" do
+      expect(MultiplicationTable.make_table_s @xs).to eq @table_as_string
+    end
+  end
+
+  describe "#table_to_s" do
+    it "should convert a multiplication table to a string" do
+      expect(MultiplicationTable.table_to_s @table).to eq @table_as_string
+    end
+  end
+
   describe "#format_item" do
     it "should convert a digit to a formatted string" do
       expect(MultiplicationTable.format_item 1).to eq "   1"
@@ -34,17 +46,5 @@ describe MultiplicationTable do
       expect(MultiplicationTable.format_row "abc", [1, 2]).to eq " abc|   1   2"
     end
   end
-
-  describe "#table_to_s" do
-    it "should convert a multiplication table to a string" do
-      expect(MultiplicationTable.table_to_s @table).to eq @table_as_string
-    end
-  end
-
-  describe "#make_table_s" do
-    it "should create a string version of a multiplication table" do
-      expect(MultiplicationTable.make_table_s @xs).to eq @table_as_string
-    end
-  end
-
+  
 end

@@ -3,8 +3,6 @@ module MultiplicationTable
   def self.make_table(xs)
     {
       values: xs,
-
-      # O(n^2)
       results: xs.map {|x| xs.map {|y| y * x}}
     }
   end
@@ -14,7 +12,6 @@ module MultiplicationTable
 
     divider = header.gsub(/./, "-")
 
-    # O(n^2)
     rows = table[:values].map.with_index do |x, i|
       format_row x, table[:results][i]
     end
