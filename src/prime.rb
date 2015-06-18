@@ -1,4 +1,5 @@
 module Prime
+
   def self.primes
     # could use [2] + [3,5..] if there was a way to combine lazy lists
     (2..Float::INFINITY).lazy.select {|x| is_prime? x}
@@ -20,4 +21,5 @@ module Prime
   def self.take_primes(n)
     primes.take(n).to_a
   end
+  
 end
