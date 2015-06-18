@@ -1,4 +1,5 @@
 module Prime
+
   def self.primes
     # could use [2] + [3,5..] if there was a way to combine lazy lists
     # O(n)
@@ -18,8 +19,9 @@ module Prime
   def self.is_factor_of?(n, factor)
     n % factor === 0
   end
-  
+
   def self.take_primes(n)
     primes.take(n).to_a
   end
+  
 end

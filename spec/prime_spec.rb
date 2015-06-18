@@ -1,7 +1,8 @@
 require "./src/prime"
 
 describe Prime do
-  context "#is_prime?" do
+  
+  describe "#is_prime?" do
     it "should be satisfied when given a prime number" do
       expect(Prime.is_prime? 2).to be true
       expect(Prime.is_prime? 11).to be true
@@ -13,7 +14,7 @@ describe Prime do
     end
   end
 
-  context "#take_primes" do
+  describe "#take_primes" do
     it "should return a list of prime numbers" do
       expect(Prime.take_primes 0).to eq []
       expect(Prime.take_primes 5).to eq [2, 3, 5, 7, 11]
