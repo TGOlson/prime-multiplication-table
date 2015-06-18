@@ -1,20 +1,24 @@
-module MultiplicationTable
+class MultiplicationTable
 
-  def self.make_table(xs)
-    {
-      values: xs,
-      results: calculate_results(xs)
-    }
+  attr_reader :values, :results
+
+  def initialize(xs)
+    @values  = xs
+    @results = calculate_results xs
   end
 
-  def self.calculate_results(xs)
-    xs.map {|x| xs.map {|y| y * x}}
+  def calculate_results(xs)
+    xs.map {|x| xs.map {|y| x * y}}
   end
 
-  def self.table_to_s(table)
-    header  = format_row "", table[:values]
+  def to_s
+    MultiplicationTable.format_table self
+  end
+
+  def self.format_table(table)
+    header  = format_row "", table.values
     divider = header.gsub(/./, "-")
-    rows    = format_rows table[:values], table[:results]
+    rows    = format_rows table.values, table.results
 
     [header, divider, rows].join "\n"
   end
@@ -31,10 +35,6 @@ module MultiplicationTable
 
   def self.format_item(x)
     sprintf "%4s", x
-  end
-
-  def self.make_table_s(xs)
-    table_to_s make_table(xs)
   end
 
 end
