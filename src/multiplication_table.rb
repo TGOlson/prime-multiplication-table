@@ -23,7 +23,7 @@ module MultiplicationTable
   end
 
   def self.format_row(key, row)
-    format_item(key) + "|" + row.map {|y| format_item y}.join
+    format_item(key) + "|" + row.map {|x| format_item x}.join
   end
 
   def self.format_item(x)
