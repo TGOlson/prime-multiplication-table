@@ -12,24 +12,28 @@ class MultiplicationTable
   end
 
   def to_s
-    header  = format_row "", @values
+    MultiplicationTable.format_table self
+  end
+
+  def self.format_table(table)
+    header  = format_row "", table.values
     divider = header.gsub(/./, "-")
-    rows    = format_rows @values, @results
+    rows    = format_rows table.values, table.results
 
     [header, divider, rows].join "\n"
   end
 
-  def format_rows(values, results)
+  def self.format_rows(values, results)
     values.map.with_index do |x, i|
       format_row x, results[i]
     end
   end
 
-  def format_row(key, row)
+  def self.format_row(key, row)
     format_item(key) + "|" + row.map {|x| format_item x}.join
   end
 
-  def format_item(x)
+  def self.format_item(x)
     sprintf "%4s", x
   end
 

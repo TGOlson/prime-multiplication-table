@@ -29,13 +29,13 @@ describe MultiplicationTable do
 
   describe "#format_item" do
     it "should convert an item to a formatted string" do
-      expect(@table.format_item 1).to eq "   1"
+      expect(MultiplicationTable.format_item 1).to eq "   1"
     end
   end
 
   describe "#format_row" do
     it "should convert a row to a formatted string" do
-      expect(@table.format_row "abc", [1, 2]).to eq " abc|   1   2"
+      expect(MultiplicationTable.format_row "abc", [1, 2]).to eq " abc|   1   2"
     end
   end
 
