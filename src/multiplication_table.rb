@@ -10,14 +10,24 @@ module MultiplicationTable
   end
 
   def self.table_to_s(table)
-    header = "_|" + table[:values].join('|')
+    header = format_row "", table[:values]
+
+    divider = header.gsub(/./, "-")
 
     # O(n^2)
     rows = table[:values].map.with_index do |x, i|
-      "#{x}| " + table[:results][i].join(" ")
+      format_row x, table[:results][i]
     end
 
-    [header, rows].join "\n"
+    [header, divider, rows].join "\n"
+  end
+
+  def self.format_row(key, row)
+    format_item(key) + "|" + row.map {|y| format_item y}.join
+  end
+
+  def self.format_item(x)
+    sprintf "%4s", x
   end
 
   def self.make_table_s(xs)

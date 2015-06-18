@@ -3,21 +3,35 @@ require "./src/multiplication_table"
 describe MultiplicationTable do
 
   before do
-    @xs = [2, 3]
+    @xs = [5, 10, 25]
 
     @table = MultiplicationTable.make_table @xs
 
     @table_as_string = [
-      "_|2|3",
-      "2| 4 6",
-      "3| 6 9"
+      "    |   5  10  25",
+      "-----------------",
+      "   5|  25  50 125",
+      "  10|  50 100 250",
+      "  25| 125 250 625"
     ].join("\n")
   end
 
   describe "#make_table" do
     it "should create a multiplication table from a list of numbers" do
       expect(@table).to eq values: @xs,
-                           results: [[4, 6], [6, 9]]
+                           results: [[25, 50, 125], [50, 100, 250], [125, 250, 625]]
+    end
+  end
+
+  describe "#format_item" do
+    it "should convert a digit to a formatted string" do
+      expect(MultiplicationTable.format_item 1).to eq "   1"
+    end
+  end
+
+  describe "#format_row" do
+    it "should convert a row to a formatted string" do
+      expect(MultiplicationTable.format_row "abc", [1, 2]).to eq " abc|   1   2"
     end
   end
 
