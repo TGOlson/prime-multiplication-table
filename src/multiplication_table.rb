@@ -3,20 +3,26 @@ module MultiplicationTable
   def self.make_table(xs)
     {
       values: xs,
-      results: xs.map {|x| xs.map {|y| y * x}}
+      results: calculate_results(xs)
     }
   end
 
+  def self.calculate_results(xs)
+    xs.map {|x| xs.map {|y| y * x}}
+  end
+
   def self.table_to_s(table)
-    header = format_row "", table[:values]
-
+    header  = format_row "", table[:values]
     divider = header.gsub(/./, "-")
-
-    rows = table[:values].map.with_index do |x, i|
-      format_row x, table[:results][i]
-    end
+    rows    = format_rows table[:values], table[:results]
 
     [header, divider, rows].join "\n"
+  end
+
+  def self.format_rows(values, results)
+    values.map.with_index do |x, i|
+      format_row x, results[i]
+    end
   end
 
   def self.format_row(key, row)
