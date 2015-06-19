@@ -7,7 +7,7 @@ module Prime
 
   def self.is_prime?(n)
     return true  if n == 2
-    return false if is_factor_of? n, 2
+    return false if n.even?
 
     range = (3..Math.sqrt(n)).step 2
 
@@ -21,5 +21,5 @@ module Prime
   def self.take_primes(n)
     primes.take(n).to_a
   end
-  
+
 end
